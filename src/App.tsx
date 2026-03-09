@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import {
   StickyButton,
   ZoneCard,
@@ -472,10 +472,6 @@ export default function App() {
   const [quantities, setQuantities] = useState<Record<string, number>>(initialQuantities);
   const selectorRef = useRef<HTMLDivElement>(null);
   
-  // Refs for scrolling
-  const entryRef = useRef<HTMLElement>(null);
-  const campingRef = useRef<HTMLElement>(null);
-  const fbRef = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState('entry');
 
   const goToStep = (tabId: string) => {
@@ -501,10 +497,6 @@ export default function App() {
       ...prev,
       [zoneId]: Math.max(0, (prev[zoneId] ?? 0) + delta),
     }));
-  };
-
-  const scrollToSelector = () => {
-    selectorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const handleZoneSelect = (id: string) => setSelectedZone(id);
@@ -661,7 +653,6 @@ export default function App() {
       </main>
 
       <StickyButton
-        label="Seleccionar entradas"
         price={totalPrice}
         priceLabel={activeTab === 'fb' ? 'Comprar ahora' : 'Continuar'}
         onClick={handleNextStep}

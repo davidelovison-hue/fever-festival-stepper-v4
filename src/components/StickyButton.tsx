@@ -1,7 +1,6 @@
 import { colors, radius } from '../lib/theme';
 
 interface StickyButtonProps {
-  label: string;
   onClick: () => void;
   price?: number;
   priceLabel?: string;
@@ -9,7 +8,6 @@ interface StickyButtonProps {
 }
 
 export function StickyButton({ 
-  label, 
   onClick, 
   price,
   priceLabel = 'Comprar ahora',
